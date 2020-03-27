@@ -7,5 +7,7 @@ module.exports.syncSleep = function(tm) {
 };
 
 module.exports.asyncSleep = function(tm) {
-  // return new Promise(((res, rej) = {}));
+  return new Promise(resolve => setTimeout(resolve, tm));
 };
+
+module.exports.question = require("./question");

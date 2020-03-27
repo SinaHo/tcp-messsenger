@@ -8,5 +8,8 @@
     "test": "node test.js"
   },
   "author": "Sina Honarvar",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "shortid": "^2.2.15"
+  }
 }

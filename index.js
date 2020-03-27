@@ -3,6 +3,7 @@ const { host, port } = require("./config");
 const { Client } = require("./datatypes");
 const { syncSleep, asyncSleep } = require("./utils");
 const handler = require("./handlers");
+
 const server = net.createServer();
 server.listen(port, host, () => {
   console.log(`tcp server started on port {${port}}`);
@@ -11,11 +12,14 @@ server.listen(port, host, () => {
 server.on("connection", function(sock) {
   //   console.log("CONNECTED: " + sock.remoteAddress + ":" + sock.remotePort);
   const _this = new Client(sock);
-  sock.write({
-    type: "response",
-    status: 200,
-    body: { dataType: "clientId", data: _this._id }
-  });
+  console.log(_this._id);
+  sock.write(
+    JSON.stringify({
+      type: "response",
+      status: 200,
+      body: { dataType: "clientId", data: _this._id }
+    })
+  );
   sock.on("data", function(data) {
     let req;
     try {

@@ -8,10 +8,6 @@ class Client {
     this.name = name;
     this._id = shortid.generate();
     this.online = true;
-    // socket.on("close", data => {
-    //   this.disconnect();
-    //   console.log("data in onClose : ", data);
-    // });
     clients.push(this);
   }
   disconnect() {
